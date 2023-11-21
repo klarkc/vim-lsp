@@ -2,7 +2,7 @@
 function! lsp#utils#workspace_edit#apply_workspace_edit(workspace_edit) abort
     let l:loclist_items = []
 
-    if has_key(a:workspace_edit, 'documentChanges')
+    if has_key(a:workspace_edit, 'documentChanges') && a:workspace_edit['documentChanges'] != v:null
         for l:text_document_edit in a:workspace_edit['documentChanges']
             let l:loclist_items += s:_apply(l:text_document_edit['textDocument']['uri'], l:text_document_edit['edits'])
         endfor

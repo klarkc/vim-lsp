@@ -180,7 +180,7 @@ endfunction
 
 function! s:handle_one_code_action(server_name, sync, bufnr, command_or_code_action) abort
     " has WorkspaceEdit.
-    if has_key(a:command_or_code_action, 'edit')
+    if has_key(a:command_or_code_action, 'edit') && a:command_or_code_action['edit'] != v:null
         call lsp#utils#workspace_edit#apply_workspace_edit(a:command_or_code_action['edit'])
     endif
 
